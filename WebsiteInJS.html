@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOL HAHAHAHAH</title>
+    <style>
+        #output {
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>:)</h1>
+        <h4>What's your name?</h4>
+        <p id="output"></p>
+        <input type="text" id="userName" placeholder="Enter your name to start">
+        <button onclick="startTypingMessage1()">Start</button>
+    </div>
+
+    <script>
+        const outputElement = document.getElementById("output");
+        const userNameInput = document.getElementById("userName");
+        const words = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+            "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "'", "I", "?", ".", "/", "", ":"];
+        
+        let name = "Hey what is your name?";
+        let newName = " ";
+        let ind = 0;
+        let isTyping = false;
+
+        function typeText() {
+            if (!isTyping) {
+                return;
+            }
+
+            if (name.toLowerCase() === newName) {
+                outputElement.textContent = newName;
+                setTimeout(displayGreeting, 1000); // Display greeting after typing name
+                return;
+            }
+
+            if (ind < name.length && name.toLowerCase()[ind] === newName.toLowerCase()[ind]) {
+                newName += name[ind];
+                ind++;
+            } else {
+                for (const i of words) {
+                    if (name.toLowerCase() === newName.toLowerCase()) {
+                        break;
+                    } else {
+                        outputElement.textContent = newName + i;
+                        if (ind < name.length && i.toLowerCase() === name[ind].toLowerCase()) {
+                            newName += i;
+                            ind++;
+                            setTimeout(typeText, 100);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if (newName.toLowerCase() === name.toLowerCase()) {
+                outputElement.textContent = newName + ":)";
+                setTimeout(displayGreeting, 1000); // Display greeting after typing name
+                return;
+            }
+        }
+
+        function displayGreeting() {
+            outputElement.textContent = `Hi ${userNameInput.value}, do you have a boyfriend?`;
+        }
+
+        function startTypingMessage1() {
+            isTyping = true;
+            name = `hey, ${userNameInput.value}`;
+            newName = " ";
+            ind = 0;
+            typeText();
+        }
+    </script>
+</body>
+</html>
