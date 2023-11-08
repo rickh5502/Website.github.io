@@ -1,0 +1,74 @@
+<!--
+    This was originally the page named 'testFile'
+ -->
+
+<html>
+<head>
+  <title>For the memes</title>
+  <style>
+    p {
+background-color: #87CEEB; /* Light blue background */
+      text-align: center;
+
+      font-size: 32px;
+      font-family: Candara, Oswald;
+    }
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 25%;
+    }
+  </style>
+</head>
+<body>
+  <p>Wanna hang out sometimes?</p>
+  <img id="gifImage" src="https://media.tenor.com/zGm5acSjHCIAAAAM/cat-begging.gif">
+</body>
+</html>
+<title>Botões</title>
+<style>
+  #botao1 {
+    position: fixed;
+    top: 70%;
+    left: 55%;
+
+    transform: translate(-50%, -50%);
+ background-color: #5cb85c;
+
+      color: #fff;
+  }
+  #botao2 {
+    position: absolute;
+    left: 39%;
+    top: 68%;
+
+	background-color: #d9534f;
+      color: #fff;
+
+  }
+</style>
+</head>
+<body>
+  <button id="botao1">Yes</button>
+  <button id="botao2">NO</button>
+  <script>
+    const button2 = document.getElementById('botao2');
+    button2.addEventListener('mouseover', function() {
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const randomLeft = Math.random() * viewportWidth;
+      const randomTop = Math.random() * viewportHeight;
+      this.style.left = randomLeft + 'px';
+      this.style.top = randomTop + 'px';
+    });
+
+  </script>
+  <script>
+    document.getElementById('botao1').addEventListener('click', function() {
+      // Change the image source when "Yes" is clicked
+      document.getElementById('gifImage').src = 'https://media.tenor.com/HiI5hv0UZVgAAAAC/snoopy-dance.gif';
+      alert('Here\'s my number 240-354-5637, but I\'ll text you... press ok :)');
+    });
+  </script>
+</body>
+</html>
