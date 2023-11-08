@@ -1,0 +1,70 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const words = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+  "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "'", "I", "?", ".", "/", "", ":"];
+
+let name = "Hey, what is your name?";
+let newName = " ";
+let ind = 0;
+let isTyping = false;
+
+function typeText() {
+  if (!isTyping) {
+    return;
+  }
+
+  if (name.toLowerCase() === newName) {
+    console.log(newName);
+    setTimeout(displayGreeting, 1000); // Display greeting after typing name
+    return;
+  }
+
+  if (ind < name.length && name.toLowerCase()[ind] === newName.toLowerCase()[ind]) {
+    newName += name[ind];
+    ind++;
+  } else {
+    for (const i of words) {
+      if (name.toLowerCase() === newName.toLowerCase()) {
+        break;
+      } else {
+        console.log(newName + i);
+        if (ind < name.length && i.toLowerCase() === name[ind].toLowerCase()) {
+          newName += i;
+          ind++;
+          setTimeout(typeText, 100);
+          return;
+        }
+      }
+    }
+  }
+
+  if (newName.toLowerCase() === name.toLowerCase()) {
+    console.log(newName + ":)");
+    setTimeout(displayGreeting, 1000); // Display greeting after typing name
+    return;
+  }
+}
+
+function displayGreeting() {
+  rl.question(`Hi, do you have a boyfriend? `, (answer) => {
+    console.log(`You answered: ${answer}`);
+    rl.close();
+  });
+}
+
+function startTypingMessage1() {
+  rl.question(`Enter your name to start: `, (nameInput) => {
+    isTyping = true;
+    name = `Hey, ${nameInput}`;
+    newName = " ";
+    ind = 0;
+    typeText();
+  });
+}
+
+startTypingMessage1();

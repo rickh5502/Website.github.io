@@ -14,7 +14,7 @@
         <h4>What's your name?</h4>
         <p id="output"></p>
         <input type="text" id="userName" placeholder="Enter your name to start">
-        <button onclick="startTypingMessage1()">Start</button>
+        <button onclick="phase1()">Start</button>
     </div>
 
     <script>
@@ -23,9 +23,9 @@
         const words = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
             "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "'", "I", "?", ".", "/", "", ":"];
         
-        let name = "Hey what is your name?";
+        const name = userNameInput;
         let newName = " ";
-        let ind = 0;
+        let index = 0;
         let isTyping = false;
 
         function typeText() {
@@ -66,7 +66,8 @@
         }
 
         function displayGreeting() {
-            outputElement.textContent = `Hi ${userNameInput.value}, do you have a boyfriend?`;
+            //outputElement.textContent = `Hi ${userNameInput.value}, do you have a boyfriend?`;
+            
         }
 
         function startTypingMessage1() {
@@ -76,6 +77,78 @@
             ind = 0;
             typeText();
         }
+
+        //this funciton is the response after the user enters their name~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        function phase1(){
+            
+            
+            const outputElement = document.getElementById("output");
+            const userNameInput = document.getElementById("userName");
+            const userName = userNameInput.value;
+
+            let index = 0;
+
+            // Clear the output elements
+            outputElement.textContent = "";
+
+            // Start typing the message character by character
+            const intervalId = setInterval(function () {
+                if (index < userName.length) {
+                    const char = userName.charAt(index);
+                    outputElement.textContent += char;
+                    index++;
+                } else {
+                    clearInterval(intervalId); // Stop when the entire message is displayed
+                }
+            }, 100); // Adjust the delay (in milliseconds) for typing speed
+        }
+       
+//             function typeText() {
+//     if (!isTyping) {
+//         return;
+//     }
+
+//     if (name.toLowerCase() === newName) {
+//         outputElement.textContent = newName;
+//         setTimeout(displayGreeting, 1000); // Display greeting after typing name
+//         return;
+//     }
+
+//     if (ind < name.length && name.toLowerCase()[ind] === newName.toLowerCase()[ind]) {
+//         newName += name[ind];
+//         ind++;
+//         setTimeout(typeText, 0); // Immediately continue typing
+//     } else {
+//         let wordIndex = 0;
+//         function typeWord() {
+//             if (wordIndex < words.length) {
+//                 const i = words[wordIndex];
+//                 if (name.toLowerCase() === newName.toLowerCase()) {
+//                     outputElement.textContent = newName + ":)";
+//                     setTimeout(displayGreeting, 1000); // Display greeting after typing name
+//                 } else {
+//                     outputElement.textContent = newName + i;
+//                     if (ind < name.length && i.toLowerCase() === name[ind].toLowerCase()) {
+//                         newName += i;
+//                         ind++;
+//                     }
+//                     setTimeout(typeWord, 1000); // Continue typing the next character
+//                 }
+//                 wordIndex++;
+//             } else {
+//                 setTimeout(typeText, 0); // Continue typing the next word
+//             }
+//         }
+//         setTimeout(typeWord, 1000); // Start typing the word
+//     }
+// }
+
+
+
+            
+        }
+
+
     </script>
 </body>
 </html>

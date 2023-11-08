@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOL HAHAHAHAH</title>
+    <style>
+        #output {
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>:)</h1>
+        <h4>What's your name?</h4>
+        <p id="output"></p>
+        <input type="text" id="userName" placeholder="Enter your name to start">
+        <button onclick="phase1()">Start</button>
+    </div>
+
+    <script>
+        function phase1() {
+            const outputElement = document.getElementById("output");
+            const userNameInput = document.getElementById("userName");
+            const userName = userNameInput.value;
+
+            let index = 0;
+
+            // Clear the output element
+            outputElement.textContent = "";
+
+            // Start typing the message character by character
+            const intervalId = setInterval(function () {
+                if (index < userName.length) {
+                    const char = userName.charAt(index);
+                    outputElement.textContent += char;
+                    index++;
+                } else {
+                    clearInterval(intervalId); // Stop when the entire message is displayed
+                }
+            }, 100); // Adjust the delay (in milliseconds) for typing speed
+        }
+    </script>
+</body>
+</html>
