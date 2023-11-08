@@ -1,0 +1,394 @@
+<!--THIS IS JUST A COPY OF THE FINAL DRAFT-->
+
+
+
+<!--THIS IT THE OLD FORMAT FOR THE SITE
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOL HAHAHAHAH</title>
+    <style>
+        #output {
+            white-space: pre;
+        }
+    </style>
+</head>
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOL HAHAHAHAH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ff6347; /* Tomato Red */
+        }
+
+        h4 {
+            color: #008080; /* Teal */
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #008080; /* Teal */
+        }
+
+        input[type="text"] {
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #008080; /* Teal */
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #006666; /* Darker Teal on hover */
+        }
+
+        #output {
+            white-space: pre;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <div>
+        <h1>:)</h1>
+        <h4>What's your name?</h4>
+        <input type="text" id="userName" placeholder="Enter your name to start">
+        <button onclick="startPhase1()">Start</button>
+        <p id="output"></p>
+    </div>
+
+    <div id="responseDiv1" style="display:none">
+        <h4>Type answer below</h4>
+        <input type="text" id="responseInput1" placeholder="Yes or No">
+        <button id="continueButton" onclick="continuePhase1()">Continue</button>
+    </div>
+
+    <div id="responseDiv2" style="display:none">
+        <h4>Do you want another one?</h4>
+        <input type="text" id="responseInput2" placeholder="Yes or No">
+        <button id="continueButton" onclick="phase3()">Continue</button>
+    </div>
+
+    <div id="responseDiv3" style="display:none">
+        <h4>Can I get your number then?</h4>
+        <input type="text" id="responseInput3" placeholder="Yes or No">
+        <button id="continueButton" onclick="phase2()">Continue</button>
+    </div>
+
+    <div id="responseDiv4" style="display:none">
+        <h4>Enter number below</h4>
+        <input type="text" id="responseInput4" placeholder="#">
+        <button id="continueButton" onclick="finalYesPhase()">Continue</button>
+    </div>
+
+
+    <div id="responseDiv5" style="display:none">
+        <h4>What about ur ig?</h4>
+        <input type="text" id="responseInput5" placeholder="IG:...">
+        <button id="continueButton" onclick="finalYesPhase()">Continue</button>
+    </div>
+
+
+
+    <div id="resultDiv" style="display:none">
+        <p id="resultMessage"></p>
+    </div>
+
+    <script>
+
+
+
+
+        let i = 0; //keep track of chances
+        function startPhase1() {
+            const outputElement = document.getElementById("output");
+            const userNameInput = document.getElementById("userName");
+            const userName = userNameInput.value;
+
+            const greeting = "Heyy ";
+            const question1 = "! Do you have a boyfriend?"; // Change the question as needed
+            const question2 = "Do you want another one";
+            const message1 = "You said no. Have a good one";
+            const question3 = "Can I get your number";//FINISH
+
+            outputElement.textContent = "";
+
+            function typeMessage(message, delay) {
+                let i = 0;
+                const intervalId = setInterval(function () {
+                    if (i < message.length) {
+                        const char = message.charAt(i);
+                        outputElement.textContent += char;
+                        i++;
+                    } else {
+                        clearInterval(intervalId);
+                        if (message === question1) {
+                            // When the question message is typed, show the response textbox and continue button
+                            showResponseInput1();
+                        }
+                    }
+                }, delay);
+            }
+
+            typeMessage(greeting, 100);
+
+            setTimeout(function () {
+                typeMessage(userName, 100);
+            }, greeting.length * 100);
+
+            setTimeout(function () {
+                typeMessage(question1, 100);
+            }, (greeting.length + userName.length) * 100);
+
+
+
+
+
+        }
+
+        function showResponseInput1() {
+            // Show the response input and continue button
+            const responseDiv1 = document.getElementById("responseDiv1");
+            responseDiv1.style.display = "block";
+
+            const continueButton = document.getElementById("continueButton");
+            continueButton.style.display = "inline";
+        }
+
+
+        function showResponseInput2() {//THIS BUTTON IS FOR YES TO FIRST 
+            // Show the response input and continue button
+            const responseDiv2 = document.getElementById("responseDiv2");
+            responseDiv2.style.display = "block";
+
+            const continueButton = document.getElementById("continueButton");
+            continueButton.style.display = "inline";
+        }
+
+        function showResponseInput3() {//THIS BUTTON IS FOR NO TO FIRST QUESTION (dont have a bf)
+            // Show the response input and continue button
+            const responseDiv3 = document.getElementById("responseDiv3");
+            responseDiv3.style.display = "block";
+
+            const continueButton = document.getElementById("continueButton");
+            continueButton.style.display = "inline";
+        }
+
+        function showResponseInput4() {//THIS BUTTON IS FOR ...........
+            // Show the response input and continue button
+            const responseDiv4 = document.getElementById("responseDiv4");
+            responseDiv4.style.display = "block";
+
+            const continueButton = document.getElementById("continueButton");
+            continueButton.style.display = "inline";
+        }
+
+
+        function showResponseInput5() {//THIS BUTTON IS FOR ...........
+            // Show the response input and continue button
+            const responseDiv5 = document.getElementById("responseDiv5");
+            responseDiv5.style.display = "block";
+
+            const continueButton = document.getElementById("continueButton");
+            continueButton.style.display = "inline";
+        }
+
+        function showResponseInput6() {//THIS BUTTON IS FOR ...........
+            // Show the response input and continue button
+            const responseDiv6 = document.getElementById("responseDiv6");
+            responseDiv6.style.display = "block";
+
+            const continueButton = document.getElementById("continueButton");
+            continueButton.style.display = "inline";
+        }
+
+
+
+
+        function continuePhase1() {
+            let i = 0;
+            const responseInput1 = document.getElementById("responseInput1");
+            const userResponse = responseInput1.value.toLowerCase();
+
+
+            const responseInput2 = document.getElementById("responseInput2");
+            const userResponse2 = responseInput1.value.toLowerCase();
+
+
+            // Clear the input field and hide it
+            responseInput1.value = "";
+            //responseInput1.style.display = "none";    THIS MAKES THE CONTINUE BOX RESPONSE DISSAPPEAR IF YOU UNCOMMENT IT OUT 
+            //IDK IF I WANT THIS OR NOT YET
+
+            // Process user response
+            const resultMessage = document.getElementById("resultMessage");
+            const resultDiv = document.getElementById("resultDiv");
+            resultDiv.style.display = "block";
+            
+            if (userResponse === "yes") {
+                // Handle "yes" response for the original question
+                const hasBf = "You said 'yes'. Do you want another one?";
+                //typeMessage((hasBf));
+                resultMessage.textContent = "You said 'yes'. Do you want another one?";
+                //IMPLEMENT THIS... there should be another continue box that stores the users response
+                showResponseInput2();
+                if(userResponse2 === "no"){//handlers no for the second question
+                    resultMessage.textContent = "My bad for distirbing you have a good one..."
+                }else{
+                    
+
+                    //resultMessage.textContent = "Lemme get your number then...";
+                    
+                    //IMPLEMENT THIS... Another box for the user to enter their number should appear and another continue button. 
+                }
+
+
+
+            } else if (userResponse === "no") {
+                // Handle "no" response for the original question
+                //this should be can i...
+                //NEED TO ADD THIS BACK SOMEHOW WITH LETTER BY LETTERconst askForNum = "Lemme get your number then...";
+                
+               // const responseInput4 = document.getElementById("responseInput4");
+            
+            
+               //         setTimeout(function () {
+            //     typeMessage(askForNum, 100);
+            // }, (greeting.length + userName.length) * 100);
+
+                //COMMENTED OUT THIS BCUZ THE CODE ABOVE REPLACES IT resultMessage.textContent = "Can i get your number then..."; // this should come before the text box
+                showResponseInput3();
+
+                 
+                //COMMENTED OUT THE MESSAGE~~~~~~~~~~~~~~~~~~~resultMessage.textContent = "Lemme get your number then...";//this should come after the text box
+                    //IMPLEMENT THIS... Another box for the user to enter their number should appear and another continue button.
+                    
+                    /*THIS CAN BE DELETED NOT NEEDED~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    // const responseInput3 = document.getElementById("responseInput3");
+                    // const userResponse3 = responseInput3.value.toLowerCase();
+
+                    // const responseInput4 = document.getElementById("responseInput4");
+                    // const userResponse4 = responseInput4.value.toLowerCase();
+
+
+                    // if(userResponse3 == yes){
+                    //     resultMessage.textContent = "BAG SECURED get num";
+                    //     showResponseInput4();
+                    // }else{
+                    //     showResponseInput4();
+                    //     resultMessage.textContent = "BAG FUMBLED get num";
+                    // }
+            */
+            
+            
+            
+            
+                } else {
+                    while(i < 3){
+                        showResponseInput1();
+                        if(i > 2){
+                    resultMessage.textContent = "Youve had 3 chances and your clearly autistic because you cant type 'yes' or 'no' ";
+                }
+                i++;
+                resultMessage.textContent = "You didn't enter 'yes' or 'no'. Please try again.";
+                    }
+                // Handle other responses or errors
+                //FIX THIS LATER SO THAT IT ONLY GIVES 3 CHANCES YOU PROBABLY GOT TO MAKE A LOOP OR SOMETHING TO CEHCK
+                
+            }
+        }
+
+
+        function phase2(){//no bf go time to cook // goes to response 3 or 4 based on the answer 
+
+            const responseInput3 = document.getElementById("responseInput3");
+                    const userResponse3 = responseInput3.value.toLowerCase();
+            const responseInput4 = document.getElementById("responseInput4");
+                    const userResponse4 = responseInput4.value.toLowerCase();
+
+
+                    if(userResponse3 == "yes"){
+                        //resultMessage.textContent = "BAG SECURED get num";
+                        showResponseInput4();
+                    }else{
+                        showResponseInput5();
+                        resultMessage.textContent = "BAG FUMBLED WOMP WOMP WOMP";
+                    }
+            
+        }
+
+        function phase3(){//no bf go time to cook // goes to response 3 or 4 based on the answer 
+
+const responseInput2 = document.getElementById("responseInput2");
+        const userResponse2 = responseInput2.value.toLowerCase();
+// const responseInput4 = document.getElementById("responseInput4");
+//         const userResponse4 = responseInput4.value.toLowerCase();
+
+
+        if(userResponse2 == "yes"){//DOES WANT ANOTHER BF
+            showResponseInput3();
+            resultMessage.textContent = "BAG SECURED get num";
+            
+        }else{//DOESNT WANT ANOTHER BF
+            resultMessage.textContent = "My bad have a good one";
+            resultMessage.textContent = "BAG FUMBLED WOMP WOMP WOMP";
+        }
+
+}
+
+
+function finalYesPhase() {
+    // Display the link that links to a different site
+    const resultMessage = document.getElementById("resultMessage");
+    resultMessage.textContent = "Now click the link below: ";
+
+    // Create an anchor (link) element
+    const link = document.createElement("a");
+    link.href = "file:///C:/Users/rickh/Downloads/testFile.html"; // Set the URL you want to link to
+    link.textContent = "Click this link"; // Set the link text
+
+    // Append the link to the resultMessage
+    resultMessage.appendChild(link);
+}
+
+
+
+
+
+function typeHeader(headerText, headerElement, delay) {
+    let i = 0;
+    const intervalId = setInterval(function () {
+        if (i < headerText.length) {
+            const char = headerText.charAt(i);
+            headerElement.textContent += char;
+            i++;
+        } else {
+            clearInterval(intervalId);
+        }
+    }, delay);
+}
+
+
+
+
+
+    </script>
+</body>
+</html>
